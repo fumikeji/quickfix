@@ -72,8 +72,10 @@ type MockApp struct {
 func (e *MockApp) OnCreate(sessionID SessionID) {
 }
 
-func (e *MockApp) OnLogon(sessionID SessionID) {
+func (e *MockApp) OnLogon(sessionID SessionID) error {
 	e.Called()
+
+	return nil
 }
 
 func (e *MockApp) OnLogout(sessionID SessionID) {

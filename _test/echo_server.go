@@ -22,9 +22,11 @@ type EchoApplication struct {
 func (e EchoApplication) OnCreate(sessionID quickfix.SessionID) {
 	e.log.Printf("OnCreate %v\n", sessionID.String())
 }
-func (e *EchoApplication) OnLogon(sessionID quickfix.SessionID) {
+func (e *EchoApplication) OnLogon(sessionID quickfix.SessionID) error {
 	e.log.Printf("OnLogon %v\n", sessionID.String())
 	e.OrderIds = make(map[string]bool)
+
+	return nil
 }
 func (e *EchoApplication) OnLogout(sessionID quickfix.SessionID) {
 	e.log.Printf("OnLogout %v\n", sessionID.String())

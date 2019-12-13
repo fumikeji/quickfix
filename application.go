@@ -7,7 +7,7 @@ type Application interface {
 	OnCreate(sessionID SessionID)
 
 	//Notification of a session successfully logging on.
-	OnLogon(sessionID SessionID)
+	OnLogon(sessionID SessionID) error
 
 	//Notification of a session logging off or disconnecting.
 	OnLogout(sessionID SessionID)

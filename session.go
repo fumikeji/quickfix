@@ -446,7 +446,9 @@ func (s *session) handleLogon(msg *Message) error {
 	s.sentReset = false
 
 	s.peerTimer.Reset(time.Duration(float64(1.2) * float64(s.HeartBtInt)))
-	s.application.OnLogon(s.sessionID)
+	if err := s.application.OnLogon(s.sessionID); err != nil {
+		return err
+	}
 
 	if err := s.checkTargetTooHigh(msg); err != nil {
 		return err
